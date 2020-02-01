@@ -15,8 +15,8 @@ import java.util.*;
 public class WeatherResource {
 
 
-    @RequestMapping(value="/cities/{cityName}",method = RequestMethod.GET)
-    public String getTemperature(@PathVariable String cityName)
+    @RequestMapping(value="/cities/{cityName}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> getTemperature(@PathVariable String cityName)
     {
         RestTemplate restTemplate = new RestTemplate();
 
@@ -52,7 +52,7 @@ public class WeatherResource {
                 System.out.println("wear Jacket");
             }
         }
-        return retrunedString;
+        return ResponseEntity.status(HttpStatus.OK).body(retrunedString);
     }
 
 }
